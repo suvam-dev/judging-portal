@@ -73,8 +73,8 @@ export default async function TeamsPage() {
                           <UserIcon className="w-3 h-3 text-zinc-400" />
                         </div>
                         <div>
-                          <div className="text-white text-xs">{team.ownerUserId?.firstName} {team.ownerUserId?.lastName}</div>
-                          <div className="text-zinc-500 text-[10px]">{team.ownerUserId?.email}</div>
+                          <div className="text-white text-xs">{(team.ownerUserId as any)?.firstName} {(team.ownerUserId as any)?.lastName}</div>
+                          <div className="text-zinc-500 text-[10px]">{(team.ownerUserId as any)?.email}</div>
                         </div>
                       </div>
                     </td>
