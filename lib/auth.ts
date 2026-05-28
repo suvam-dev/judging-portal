@@ -17,7 +17,7 @@ export async function verifyPassword(plain: string, hash: string) {
 export async function createSession(user: any) {
   const token = await new SignJWT({ sub: String(user._id), role: user.role })
     .setProtectedHeader({ alg: "HS256" })
-    .setExpirationTime(process.env.JWT_EXPIRES_IN || "12h")
+    .setExpirationTime(process.env.JWT_EXPIRES_IN?.trim() || "12h")
     .sign(secret);
 
   const cookieStore = await cookies();
