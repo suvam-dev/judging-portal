@@ -3,7 +3,7 @@ import { Users, ShieldCheck, Clock, AlertCircle, ArrowRight } from "lucide-react
 import Link from "next/link";
 
 export const metadata = {
-  title: "Admin Dashboard | Empressario",
+  title: "Admin Dashboard | Empresario",
 };
 
 export default async function AdminDashboard() {

@@ -3,7 +3,7 @@ import { Round } from "@/models/Round";
 import { Download, Users, ShieldCheck, Trophy } from "lucide-react";
 
 export const metadata = {
-  title: "Exports | Empressario",
+  title: "Exports | Empresario",
 };
 
 export default async function ExportsPage() {
@@ -30,10 +30,10 @@ export default async function ExportsPage() {
   return (
     <div className="space-y-8 animate-fade-in">
       <div>
-        <h2 className="text-3xl font-bold tracking-tight text-white flex items-center gap-3">
-          <Download className="w-7 h-7 text-zinc-300" /> Exports
+        <h2 className="text-3xl font-bold tracking-tight text-slate-900 flex items-center gap-3">
+          <Download className="w-7 h-7 text-slate-400" /> Exports
         </h2>
-        <p className="text-zinc-400 mt-2">
+        <p className="text-slate-500 mt-2">
           Download CSV snapshots for offline analysis or reporting.
         </p>
       </div>
@@ -45,27 +45,27 @@ export default async function ExportsPage() {
             <a
               key={card.name}
               href={card.href}
-              className="group block p-6 rounded-2xl bg-[#0d0d18]/60 border border-white/[0.08] hover:border-white/[0.15] transition-all"
+              className="group block p-6 rounded-md bg-white border border-slate-200 hover:border-slate-300 shadow-sm hover:shadow transition-all"
             >
               <div className="flex items-center justify-between mb-4">
-                <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-                  <Icon className="w-5 h-5 text-zinc-300" />
+                <div className="w-10 h-10 rounded-md bg-slate-50 border border-slate-200 flex items-center justify-center">
+                  <Icon className="w-5 h-5 text-slate-500 group-hover:text-blue-800 transition-colors" />
                 </div>
-                <Download className="w-4 h-4 text-zinc-500 group-hover:text-white transition-colors" />
+                <Download className="w-4 h-4 text-slate-400 group-hover:text-blue-800 transition-colors" />
               </div>
-              <h3 className="font-bold text-white">{card.name}</h3>
-              <p className="text-sm text-zinc-400 mt-1">{card.description}</p>
+              <h3 className="font-bold text-slate-900">{card.name}</h3>
+              <p className="text-sm text-slate-500 mt-1">{card.description}</p>
             </a>
           );
         })}
       </div>
 
       <div>
-        <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-          <Trophy className="w-5 h-5 text-yellow-400" /> Leaderboards by Round
+        <h3 className="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
+          <Trophy className="w-5 h-5 text-yellow-600" /> Leaderboards by Round
         </h3>
         {rounds.length === 0 ? (
-          <div className="p-6 rounded-2xl border border-white/[0.05] bg-white/[0.02] text-sm text-zinc-500">
+          <div className="p-6 rounded-md border border-slate-200 bg-slate-50 text-sm text-slate-500">
             No rounds configured yet. Create a round before exporting a leaderboard.
           </div>
         ) : (
@@ -74,14 +74,14 @@ export default async function ExportsPage() {
               <a
                 key={r._id.toString()}
                 href={`/admin/exports/leaderboard?round=${r._id.toString()}`}
-                className="group flex items-center justify-between p-4 rounded-xl bg-white/[0.03] border border-white/[0.05] hover:border-yellow-500/30 transition-all"
+                className="group flex items-center justify-between p-4 rounded-md bg-white border border-slate-200 hover:border-blue-300 shadow-sm hover:shadow transition-all"
               >
                 <div>
-                  <div className="text-xs text-zinc-500 uppercase tracking-wider">Round {r.order}</div>
-                  <div className="font-semibold text-white text-sm mt-0.5">{r.name}</div>
-                  <div className="text-[10px] text-zinc-500 mt-1 uppercase tracking-wider">{r.status}</div>
+                  <div className="text-xs text-slate-500 uppercase tracking-wider">Round {r.order}</div>
+                  <div className="font-semibold text-slate-900 text-sm mt-0.5">{r.name}</div>
+                  <div className="text-[10px] text-slate-400 mt-1 uppercase tracking-wider">{r.status}</div>
                 </div>
-                <Download className="w-4 h-4 text-zinc-500 group-hover:text-yellow-400 transition-colors" />
+                <Download className="w-4 h-4 text-slate-400 group-hover:text-blue-800 transition-colors" />
               </a>
             ))}
           </div>

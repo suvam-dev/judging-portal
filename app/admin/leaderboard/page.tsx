@@ -5,7 +5,7 @@ import { Trophy } from "lucide-react";
 import FilterBar from "./FilterBar";
 
 export const metadata = {
-  title: "Live Leaderboard | Empressario",
+  title: "Live Leaderboard | Empresario",
 };
 
 export default async function LeaderboardPage({
@@ -35,10 +35,10 @@ export default async function LeaderboardPage({
       {/* Header & Filters */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h2 className="text-3xl font-bold tracking-tight text-white flex items-center gap-3">
-            <Trophy className="w-8 h-8 text-yellow-500" /> Live Leaderboard
+          <h2 className="text-3xl font-bold tracking-tight text-slate-900 flex items-center gap-3">
+            <Trophy className="w-8 h-8 text-yellow-600" /> Live Leaderboard
           </h2>
-          <p className="text-zinc-400 mt-2">
+          <p className="text-slate-500 mt-2">
             Real-time algorithmically weighted scores.
           </p>
         </div>
@@ -55,53 +55,53 @@ export default async function LeaderboardPage({
       </div>
 
       {/* Leaderboard Table */}
-      <div className="backdrop-blur-xl bg-[#0d0d18]/60 border border-white/[0.08] rounded-2xl overflow-hidden shadow-[0_0_30px_rgba(234,179,8,0.05)]">
+      <div className="bg-white border border-slate-200 rounded-md overflow-hidden shadow-sm">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm whitespace-nowrap">
-            <thead className="bg-black/60 text-zinc-400 text-xs uppercase tracking-wider">
+            <thead className="bg-slate-50 text-slate-500 text-xs uppercase tracking-wider">
               <tr>
-                <th className="px-6 py-5 font-semibold w-24">Rank</th>
-                <th className="px-6 py-5 font-semibold">Project Name</th>
-                <th className="px-6 py-5 font-semibold">Track</th>
-                <th className="px-6 py-5 font-semibold text-center">Judges Scored</th>
-                <th className="px-6 py-5 font-semibold text-right">Weighted Score</th>
+                <th className="px-6 py-5 font-semibold w-24 border-b border-slate-200">Rank</th>
+                <th className="px-6 py-5 font-semibold border-b border-slate-200">Project Name</th>
+                <th className="px-6 py-5 font-semibold border-b border-slate-200">Track</th>
+                <th className="px-6 py-5 font-semibold text-center border-b border-slate-200">Judges Scored</th>
+                <th className="px-6 py-5 font-semibold text-right border-b border-slate-200">Weighted Score</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/[0.05]">
+            <tbody className="divide-y divide-slate-200 bg-white">
               {leaderboard.length === 0 ? (
                 <tr>
-                  <td colSpan={5} className="px-6 py-16 text-center text-zinc-500">
+                  <td colSpan={5} className="px-6 py-16 text-center text-slate-500">
                     No scores recorded for this round yet.
                   </td>
                 </tr>
               ) : (
                 leaderboard.map((entry, index) => (
-                  <tr key={entry.teamId} className="hover:bg-white/[0.02] transition-colors group">
+                  <tr key={entry.teamId} className="hover:bg-slate-50 transition-colors group">
                     <td className="px-6 py-5">
-                      {index === 0 && <div className="w-8 h-8 rounded-full bg-yellow-500/20 text-yellow-500 flex items-center justify-center font-bold border border-yellow-500/50 shadow-[0_0_15px_rgba(234,179,8,0.3)]">1</div>}
-                      {index === 1 && <div className="w-8 h-8 rounded-full bg-zinc-300/20 text-zinc-300 flex items-center justify-center font-bold border border-zinc-300/50">2</div>}
-                      {index === 2 && <div className="w-8 h-8 rounded-full bg-orange-700/30 text-orange-400 flex items-center justify-center font-bold border border-orange-700/50">3</div>}
-                      {index > 2 && <div className="w-8 h-8 text-zinc-500 flex items-center justify-center font-bold">{index + 1}</div>}
+                      {index === 0 && <div className="w-8 h-8 rounded-full bg-yellow-50 text-yellow-700 flex items-center justify-center font-bold border border-yellow-200 shadow-sm">1</div>}
+                      {index === 1 && <div className="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold border border-slate-200">2</div>}
+                      {index === 2 && <div className="w-8 h-8 rounded-full bg-orange-50 text-orange-700 flex items-center justify-center font-bold border border-orange-200">3</div>}
+                      {index > 2 && <div className="w-8 h-8 text-slate-500 flex items-center justify-center font-bold">{index + 1}</div>}
                     </td>
-                    <td className="px-6 py-5 text-white font-bold text-base">
+                    <td className="px-6 py-5 text-slate-900 font-bold text-base">
                       {entry.teamName}
                     </td>
                     <td className="px-6 py-5">
-                      <span className="text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-white/5 text-zinc-400 border border-white/10">
+                      <span className="text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-sm bg-slate-100 text-slate-600 border border-slate-200">
                         {entry.track}
                       </span>
                     </td>
                     <td className="px-6 py-5 text-center">
                       <div className="inline-flex items-center justify-center">
-                        <span className={`font-medium ${entry.judgesScored === entry.totalJudgesAssigned ? 'text-green-400' : 'text-amber-400'}`}>
+                        <span className={`font-medium ${entry.judgesScored === entry.totalJudgesAssigned ? 'text-green-700' : 'text-amber-700'}`}>
                           {entry.judgesScored}
                         </span>
-                        <span className="text-zinc-500 mx-1">/</span>
-                        <span className="text-zinc-500">{entry.totalJudgesAssigned}</span>
+                        <span className="text-slate-400 mx-1">/</span>
+                        <span className="text-slate-500">{entry.totalJudgesAssigned}</span>
                       </div>
                     </td>
                     <td className="px-6 py-5 text-right">
-                      <div className="text-2xl font-black bg-gradient-to-r from-white to-zinc-400 bg-clip-text text-transparent group-hover:from-yellow-400 group-hover:to-yellow-200 transition-all">
+                      <div className="text-2xl font-black bg-gradient-to-r from-slate-900 to-slate-600 bg-clip-text text-transparent group-hover:from-blue-800 group-hover:to-blue-600 transition-all">
                         {entry.finalScore.toFixed(2)}
                       </div>
                     </td>

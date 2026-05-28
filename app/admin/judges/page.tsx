@@ -6,7 +6,7 @@ import ActionForm from "@/components/ActionForm";
 import ActionButton from "@/components/ActionButton";
 
 export const metadata = {
-  title: "Provision Judges | Empressario",
+  title: "Provision Judges | Empresario",
 };
 
 export default async function JudgesPage() {
@@ -19,8 +19,8 @@ export default async function JudgesPage() {
     <div className="space-y-8 animate-fade-in">
       {/* Header */}
       <div>
-        <h2 className="text-3xl font-bold tracking-tight text-white">Provision Judges</h2>
-        <p className="text-zinc-400 mt-2">
+        <h2 className="text-3xl font-bold tracking-tight text-slate-900">Provision Judges</h2>
+        <p className="text-slate-500 mt-2">
           Create and manage accounts for competition judges. Only admins can create judge accounts.
         </p>
       </div>
@@ -29,51 +29,51 @@ export default async function JudgesPage() {
         
         {/* Create Judge Form */}
         <div className="lg:col-span-1">
-          <div className="backdrop-blur-xl bg-[#0d0d18]/80 border border-white/[0.08] rounded-2xl p-6 shadow-[0_0_20px_rgba(0,0,0,0.2)]">
+          <div className="bg-white border border-slate-200 rounded-md p-6 shadow-sm">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center border border-purple-500/30">
-                <UserPlus className="w-5 h-5 text-purple-400" />
+              <div className="w-10 h-10 rounded-md bg-blue-50 flex items-center justify-center border border-blue-100">
+                <UserPlus className="w-5 h-5 text-blue-800" />
               </div>
-              <h3 className="text-lg font-bold text-white">New Judge Account</h3>
+              <h3 className="text-lg font-bold text-slate-900">New Judge Account</h3>
             </div>
 
             <ActionForm actionFn={createJudge}>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="text-xs font-semibold uppercase tracking-wider text-zinc-400 block mb-1">First Name</label>
-                  <input name="firstName" type="text" required className="w-full bg-black/20 border border-white/[0.08] text-white rounded-xl px-3 py-2 text-sm focus:border-purple-500/80 outline-none transition-colors" />
+                  <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 block mb-1">First Name</label>
+                  <input name="firstName" type="text" required className="w-full bg-white border border-slate-300 text-slate-900 rounded-md px-3 py-2 text-sm focus:border-blue-600 outline-none transition-colors" />
                 </div>
                 <div>
-                  <label className="text-xs font-semibold uppercase tracking-wider text-zinc-400 block mb-1">Last Name</label>
-                  <input name="lastName" type="text" required className="w-full bg-black/20 border border-white/[0.08] text-white rounded-xl px-3 py-2 text-sm focus:border-purple-500/80 outline-none transition-colors" />
+                  <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 block mb-1">Last Name</label>
+                  <input name="lastName" type="text" required className="w-full bg-white border border-slate-300 text-slate-900 rounded-md px-3 py-2 text-sm focus:border-blue-600 outline-none transition-colors" />
                 </div>
               </div>
               
-              <div>
-                <label className="text-xs font-semibold uppercase tracking-wider text-zinc-400 block mb-1">Username</label>
-                <input name="username" type="text" required className="w-full bg-black/20 border border-white/[0.08] text-white rounded-xl px-3 py-2 text-sm focus:border-purple-500/80 outline-none transition-colors" />
+              <div className="mt-4">
+                <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 block mb-1">Username</label>
+                <input name="username" type="text" required className="w-full bg-white border border-slate-300 text-slate-900 rounded-md px-3 py-2 text-sm focus:border-blue-600 outline-none transition-colors" />
               </div>
 
-              <div>
-                <label className="text-xs font-semibold uppercase tracking-wider text-zinc-400 block mb-1">Email Address</label>
-                <input name="email" type="email" required className="w-full bg-black/20 border border-white/[0.08] text-white rounded-xl px-3 py-2 text-sm focus:border-purple-500/80 outline-none transition-colors" />
+              <div className="mt-4">
+                <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 block mb-1">Email Address</label>
+                <input name="email" type="email" required className="w-full bg-white border border-slate-300 text-slate-900 rounded-md px-3 py-2 text-sm focus:border-blue-600 outline-none transition-colors" />
               </div>
 
-              <div>
-                <label className="text-xs font-semibold uppercase tracking-wider text-zinc-400 block mb-1">Panel Number</label>
-                <input name="panelId" type="number" min="1" required placeholder="e.g. 1" className="w-full bg-black/20 border border-white/[0.08] text-white rounded-xl px-3 py-2 text-sm focus:border-purple-500/80 outline-none transition-colors" />
-                <p className="text-[10px] text-zinc-500 mt-1">Used to group judges for assignment.</p>
+              <div className="mt-4">
+                <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 block mb-1">Panel Number</label>
+                <input name="panelId" type="number" min="1" required placeholder="e.g. 1" className="w-full bg-white border border-slate-300 text-slate-900 rounded-md px-3 py-2 text-sm focus:border-blue-600 outline-none transition-colors placeholder:text-slate-400" />
+                <p className="text-[10px] text-slate-500 mt-1">Used to group judges for assignment.</p>
               </div>
 
-              <div>
-                <label className="text-xs font-semibold uppercase tracking-wider text-zinc-400 block mb-1">Temporary Password</label>
+              <div className="mt-4">
+                <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 block mb-1">Temporary Password</label>
                 <div className="relative">
-                  <Lock className="w-4 h-4 text-zinc-500 absolute left-3 top-1/2 -translate-y-1/2" />
-                  <input name="password" type="text" required className="w-full bg-black/20 border border-white/[0.08] text-white rounded-xl pl-9 pr-3 py-2 text-sm focus:border-purple-500/80 outline-none transition-colors" />
+                  <Lock className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                  <input name="password" type="text" required className="w-full bg-white border border-slate-300 text-slate-900 rounded-md pl-9 pr-3 py-2 text-sm focus:border-blue-600 outline-none transition-colors" />
                 </div>
               </div>
 
-              <button type="submit" className="w-full mt-2 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-sm shadow-[0_0_15px_rgba(168,85,247,0.3)] transition-colors">
+              <button type="submit" className="w-full mt-6 py-3 rounded-md bg-blue-800 hover:bg-blue-900 text-white font-bold text-sm transition-colors">
                 Provision Account
               </button>
             </ActionForm>
@@ -85,43 +85,43 @@ export default async function JudgesPage() {
           
           {/* Pending Judges List */}
           {pendingJudges.length > 0 && (
-            <div className="backdrop-blur-xl bg-orange-900/10 border border-orange-500/30 rounded-2xl overflow-hidden shadow-[0_0_20px_rgba(249,115,22,0.1)]">
-              <div className="p-4 border-b border-orange-500/20 bg-orange-500/5">
-                <h3 className="font-semibold text-orange-400">Pending Judge Registrations</h3>
+            <div className="bg-amber-50 border border-amber-200 rounded-md overflow-hidden shadow-sm">
+              <div className="p-4 border-b border-amber-200 bg-amber-100">
+                <h3 className="font-semibold text-amber-900">Pending Judge Registrations</h3>
               </div>
               
               <div className="flex-1 overflow-auto custom-scrollbar">
                 <table className="w-full text-sm text-left">
-                  <thead className="text-xs uppercase bg-black/40 text-orange-500/70">
+                  <thead className="text-xs uppercase bg-amber-50 text-amber-700">
                     <tr>
                       <th className="px-6 py-4 font-semibold tracking-wider">Judge Name</th>
                       <th className="px-6 py-4 font-semibold tracking-wider">Contact</th>
                       <th className="px-6 py-4 font-semibold tracking-wider text-right">Actions</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-orange-500/10">
+                  <tbody className="divide-y divide-amber-100 bg-white">
                     {pendingJudges.map((judge) => (
-                      <tr key={judge._id.toString()} className="hover:bg-orange-500/5 transition-colors">
+                      <tr key={judge._id.toString()} className="hover:bg-amber-50 transition-colors">
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-full bg-orange-500/20 flex items-center justify-center border border-orange-500/30">
-                              <ShieldCheck className="w-4 h-4 text-orange-400" />
+                            <div className="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center border border-amber-200">
+                              <ShieldCheck className="w-4 h-4 text-amber-700" />
                             </div>
                             <div>
-                              <div className="font-medium text-white">{judge.firstName} {judge.lastName}</div>
-                              <div className="text-xs text-zinc-500">@{judge.username}</div>
+                              <div className="font-medium text-slate-900">{judge.firstName} {judge.lastName}</div>
+                              <div className="text-xs text-slate-500">@{judge.username}</div>
                             </div>
                           </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-zinc-400">
+                        <td className="px-6 py-4 whitespace-nowrap text-slate-600">
                           {judge.email}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-right">
                           <div className="flex items-center justify-end gap-2">
-                            <ActionButton actionFn={approveJudge.bind(null, judge._id.toString())} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-green-500/20 text-green-400 hover:bg-green-500/30 font-medium text-xs transition-colors border border-green-500/30" title="Approve">
+                            <ActionButton actionFn={approveJudge.bind(null, judge._id.toString())} className="flex items-center gap-1.5 px-3 py-1.5 rounded-sm bg-green-50 text-green-700 hover:bg-green-100 font-medium text-xs transition-colors border border-green-200" title="Approve">
                               <CheckCircle2 className="w-4 h-4" /> Approve
                             </ActionButton>
-                            <ActionButton actionFn={rejectJudge.bind(null, judge._id.toString())} className="p-1.5 text-red-400 hover:bg-red-500/20 rounded-lg transition-colors border border-red-500/30" title="Reject">
+                            <ActionButton actionFn={rejectJudge.bind(null, judge._id.toString())} className="p-1.5 text-red-600 hover:bg-red-50 rounded-sm transition-colors border border-red-200" title="Reject">
                               <XCircle className="w-4 h-4" />
                             </ActionButton>
                           </div>
@@ -135,14 +135,14 @@ export default async function JudgesPage() {
           )}
 
           {/* Active Panel */}
-          <div className="backdrop-blur-xl bg-[#0d0d18]/60 border border-white/[0.08] rounded-2xl overflow-hidden shadow-[0_0_20px_rgba(0,0,0,0.2)] h-full flex flex-col">
-            <div className="p-4 border-b border-white/[0.08] bg-white/[0.02]">
-              <h3 className="font-semibold text-white">Active Panel</h3>
+          <div className="bg-white border border-slate-200 rounded-md overflow-hidden shadow-sm h-full flex flex-col">
+            <div className="p-4 border-b border-slate-200 bg-slate-50/50">
+              <h3 className="font-semibold text-slate-900">Active Panel</h3>
             </div>
             
             <div className="flex-1 overflow-auto custom-scrollbar">
               <table className="w-full text-sm text-left">
-                <thead className="text-xs uppercase bg-black/40 text-zinc-400">
+                <thead className="text-xs uppercase bg-slate-50 text-slate-500">
                   <tr>
                     <th className="px-6 py-4 font-semibold tracking-wider">Judge Name</th>
                     <th className="px-6 py-4 font-semibold tracking-wider">Contact</th>
@@ -150,40 +150,40 @@ export default async function JudgesPage() {
                     <th className="px-6 py-4 font-semibold tracking-wider text-right">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white/[0.05]">
+                <tbody className="divide-y divide-slate-200 bg-white">
                   {activeJudges.length === 0 ? (
                     <tr>
-                      <td colSpan={4} className="px-6 py-12 text-center text-zinc-500">
+                      <td colSpan={4} className="px-6 py-12 text-center text-slate-500">
                         No active judges on the panel.
                       </td>
                     </tr>
                   ) : (
                     activeJudges.map((judge) => (
-                      <tr key={judge._id.toString()} className="hover:bg-white/[0.02] transition-colors">
+                      <tr key={judge._id.toString()} className="hover:bg-slate-50 transition-colors">
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-full bg-indigo-500/20 flex items-center justify-center">
-                              <ShieldCheck className="w-4 h-4 text-indigo-400" />
+                            <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center border border-blue-100">
+                              <ShieldCheck className="w-4 h-4 text-blue-800" />
                             </div>
                             <div>
-                              <div className="font-medium text-white">{judge.firstName} {judge.lastName}</div>
-                              <div className="text-xs text-zinc-500">@{judge.username}</div>
+                              <div className="font-medium text-slate-900">{judge.firstName} {judge.lastName}</div>
+                              <div className="text-xs text-slate-500">@{judge.username}</div>
                             </div>
                           </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-zinc-400">
+                        <td className="px-6 py-4 whitespace-nowrap text-slate-600">
                           {judge.email}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           {judge.status === "active" ? (
-                            <span className="px-2.5 py-1 text-xs font-medium rounded-lg bg-green-500/10 text-green-400 border border-green-500/20">Active</span>
+                            <span className="px-2.5 py-1 text-xs font-medium rounded-sm bg-green-50 text-green-700 border border-green-200">Active</span>
                           ) : (
-                            <span className="px-2.5 py-1 text-xs font-medium rounded-lg bg-red-500/10 text-red-400 border border-red-500/20">Disabled</span>
+                            <span className="px-2.5 py-1 text-xs font-medium rounded-sm bg-red-50 text-red-700 border border-red-200">Disabled</span>
                           )}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-right">
                           {judge.status === "active" && (
-                            <ActionButton actionFn={disableJudge.bind(null, judge._id.toString())} className="p-1.5 text-zinc-500 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-colors border border-transparent hover:border-red-500/30" title="Revoke Access">
+                            <ActionButton actionFn={disableJudge.bind(null, judge._id.toString())} className="p-1.5 text-slate-500 hover:text-red-700 hover:bg-red-50 rounded-sm transition-colors border border-transparent hover:border-red-200" title="Revoke Access">
                               <Ban className="w-4 h-4" />
                             </ActionButton>
                           )}

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
@@ -12,7 +13,6 @@ import {
   Trophy,
   Download,
   LogOut,
-  Sparkles
 } from "lucide-react";
 import { logoutAdmin } from "./actions";
 
@@ -37,18 +37,18 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <aside className="w-72 flex flex-col border-r border-slate-200 bg-white shadow-sm">
         
         {/* Logo Section */}
-        <div className="p-8 flex items-center gap-4">
-          <div className="flex items-center justify-center w-12 h-12 rounded-md bg-blue-800">
-            <Sparkles className="w-6 h-6 text-white" />
-          </div>
-          <div>
-            <h1 className="text-xl font-bold tracking-tight text-slate-900">
-              Empressario
-            </h1>
-            <span className="text-[10px] font-semibold uppercase tracking-widest text-slate-500">
-              Control Panel
-            </span>
-          </div>
+        <div className="p-8 flex flex-col items-start gap-2">
+          <Image
+            src="/empresario.png"
+            alt="Empresario"
+            width={500}
+            height={195}
+            priority
+            className="h-10 w-auto"
+          />
+          <span className="text-[10px] font-semibold uppercase tracking-widest text-slate-500">
+            Control Panel
+          </span>
         </div>
 
         {/* Navigation */}

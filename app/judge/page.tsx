@@ -9,7 +9,7 @@ import { ShieldCheck, ShieldAlert, Clock, ArrowRight, ClipboardCheck } from "luc
 import Link from "next/link";
 
 export const metadata = {
-  title: "Judge Dashboard | Empressario",
+  title: "Judge Dashboard | Empresario",
 };
 
 export default async function JudgeDashboard() {

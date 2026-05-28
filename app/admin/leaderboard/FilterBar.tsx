@@ -23,12 +23,12 @@ export default function FilterBar({
   }
 
   return (
-    <div className="flex items-center gap-3 bg-black/40 p-2 rounded-2xl border border-white/[0.05]">
+    <div className="flex items-center gap-3 bg-white p-2 rounded-md border border-slate-200 shadow-sm">
       <select
         name="round"
         defaultValue={selectedRoundId}
         onChange={(e) => update("round", e.currentTarget.value)}
-        className="bg-[#0d0d18] border border-white/[0.08] text-white rounded-xl px-4 py-2 text-sm focus:border-yellow-500/80 outline-none appearance-none"
+        className="bg-white border border-slate-300 text-slate-900 rounded-md px-4 py-2 text-sm focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none appearance-none cursor-pointer"
       >
         {rounds.map((r) => (
           <option key={r.id} value={r.id}>
@@ -41,10 +41,10 @@ export default function FilterBar({
         name="track"
         defaultValue={selectedTrack}
         onChange={(e) => update("track", e.currentTarget.value)}
-        className="bg-[#0d0d18] border border-white/[0.08] text-white rounded-xl px-4 py-2 text-sm focus:border-yellow-500/80 outline-none appearance-none"
+        className="bg-white border border-slate-300 text-slate-900 rounded-md px-4 py-2 text-sm focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none appearance-none cursor-pointer"
       >
         <option value="All">All Tracks</option>
-        <option value="PnS">Product & Services</option>
+        <option value="PnS">Product &amp; Services</option>
         <option value="Social">Social</option>
         <option value="KGP">IIT KGP</option>
       </select>

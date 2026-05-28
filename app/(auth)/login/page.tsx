@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import {
     User,
     Mail,
@@ -10,7 +11,6 @@ import {
     ShieldCheck,
     Users,
     ArrowRight,
-    Sparkles,
     Loader2,
     CheckCircle2
 } from "lucide-react";
@@ -83,9 +83,14 @@ export default function LoginPage() {
 
                     {/* Logo / Header */}
                     <div className="flex flex-col items-center text-center mb-8">
-                        <div className="flex items-center justify-center w-14 h-14 rounded-md bg-blue-800 mb-4">
-                            <Sparkles className="w-7 h-7 text-white" />
-                        </div>
+                        <Image
+                            src="/empresario.png"
+                            alt="Empresario"
+                            width={500}
+                            height={195}
+                            priority
+                            className="h-16 w-auto mb-4"
+                        />
                         <h1 className="text-3xl font-extrabold tracking-tight text-slate-900">
                             Welcome Back
                         </h1>
