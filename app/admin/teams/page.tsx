@@ -5,6 +5,8 @@ import { approveTeam, rejectTeam } from "./actions";
 import { CheckCircle, XCircle, Search, User as UserIcon } from "lucide-react";
 import ActionButton from "@/components/ActionButton";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Manage Teams | Empresario",
 };

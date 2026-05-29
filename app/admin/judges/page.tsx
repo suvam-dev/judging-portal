@@ -5,6 +5,8 @@ import { ShieldCheck, UserPlus, Ban, Lock, CheckCircle2, XCircle } from "lucide-
 import ActionForm from "@/components/ActionForm";
 import ActionButton from "@/components/ActionButton";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Provision Judges | Empresario",
 };

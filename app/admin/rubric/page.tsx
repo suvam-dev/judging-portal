@@ -6,6 +6,8 @@ import { FileCheck2, Plus, Trash2 } from "lucide-react";
 import RubricForm from "./RubricForm";
 import ActionButton from "@/components/ActionButton";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Configure Rubric | Empresario",
 };

@@ -8,6 +8,8 @@ import { Link2, Trash2, Users } from "lucide-react";
 import ActionForm from "@/components/ActionForm";
 import ActionButton from "@/components/ActionButton";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Assignments | Empresario",
 };

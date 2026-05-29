@@ -5,6 +5,8 @@ import { Clock, Plus, PlayCircle, StopCircle, Eye } from "lucide-react";
 import ActionForm from "@/components/ActionForm";
 import ActionButton from "@/components/ActionButton";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Configure Rounds | Empresario",
 };

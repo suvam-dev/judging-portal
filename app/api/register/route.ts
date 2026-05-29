@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import dbConnect from "@/lib/dbConnect";
 import { User } from "@/models/User";
 import { hashPassword } from "@/lib/auth";
@@ -108,6 +109,10 @@ export async function POST(req: Request) {
         );
       }
     }
+
+    // Bust admin page caches so the new participant appears immediately
+    revalidatePath("/admin");
+    revalidatePath("/admin/teams");
 
     return NextResponse.json(
       { message: "Registration successful! Your account is pending approval.", user: { id: newUser._id, username: newUser.username, role: newUser.role } },
