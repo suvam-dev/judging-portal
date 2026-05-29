@@ -4,6 +4,8 @@ import { calculateLeaderboard } from "@/lib/scoring";
 import { Trophy } from "lucide-react";
 import FilterBar from "./FilterBar";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Live Leaderboard | Empresario",
 };
