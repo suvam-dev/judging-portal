@@ -1,8 +1,4 @@
-// Idempotent admin seed. Reads ADMIN_EMAIL and ADMIN_PASSWORD from env,
-// upserts a single admin User. Re-run to rotate the password.
-//
-// Usage:
-//   ADMIN_EMAIL=admin@ecell-iitkgp.in ADMIN_PASSWORD='...' node scripts/seed-admin.mjs
+
 import { config as loadEnv } from "dotenv";
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
@@ -22,36 +18,48 @@ if (!ADMIN_EMAIL || !ADMIN_PASSWORD) {
   process.exit(1);
 }
 
-// Write directly against the collection — bypassing Mongoose document
-// hydration avoids subtleties with select:false fields and pre-save hooks.
+// Schema mirrors models/User.ts. We use the same collection name ("users").
+const UserSchema = new mongoose.Schema(
+  {
+    role: { type: String, required: true },
+    status: { type: String, default: "pending" },
+    username: { type: String, required: true, unique: true, trim: true },
+    email: { type: String, required: true, unique: true, trim: true, lowercase: true },
+    passwordHash: { type: String, required: true },
+    firstName: { type: String, required: true, trim: true },
+    lastName: { type: String, required: true, trim: true },
+    panelId: { type: Number, default: null },
+    teamId: { type: mongoose.Schema.Types.ObjectId, default: null },
+    lastLoginAt: { type: Date, default: null },
+  },
+  { timestamps: true },
+);
+
+const User = mongoose.models.User || mongoose.model("User", UserSchema);
+
 await mongoose.connect(MONGODB_URI);
-const users = mongoose.connection.db.collection("users");
 
 const email = ADMIN_EMAIL.toLowerCase();
 const passwordHash = await bcrypt.hash(ADMIN_PASSWORD, 10);
-const now = new Date();
 
-const result = await users.updateOne(
-  { email },
-  {
-    $set: { passwordHash, role: "admin", status: "active", updatedAt: now },
-    $setOnInsert: {
-      username: "admin",
-      firstName: "Admin",
-      lastName: "ECell",
-      panelId: null,
-      teamId: null,
-      lastLoginAt: null,
-      createdAt: now,
-    },
-  },
-  { upsert: true },
-);
-
-console.log(
-  result.upsertedCount
-    ? `Created admin: ${email} (id=${result.upsertedId})`
-    : `Updated existing admin: ${email}`,
-);
+const existing = await User.findOne({ email });
+if (existing) {
+  existing.passwordHash = passwordHash;
+  existing.role = "admin";
+  existing.status = "active";
+  await existing.save();
+  console.log(`Updated existing admin: ${email} (id=${existing._id})`);
+} else {
+  const created = await User.create({
+    role: "admin",
+    status: "active",
+    username: "admin",
+    email,
+    passwordHash,
+    firstName: "Admin",
+    lastName: "ECell",
+  });
+  console.log(`Created admin: ${email} (id=${created._id})`);
+}
 
 await mongoose.disconnect();
