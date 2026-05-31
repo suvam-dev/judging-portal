@@ -1,6 +1,6 @@
 import mongoose, { Schema, type InferSchemaType, type Model } from "mongoose";
 
-export const TRACKS = ["PnS", "Social", "KGP"] as const;
+export const TRACKS = ["PnS", "Social", "KGP", "DeeptechAI", "BlockchainWeb3"] as const;
 export type Track = (typeof TRACKS)[number];
 
 export const TEAM_STATUSES = ["pending", "approved", "rejected"] as const;

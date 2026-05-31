@@ -342,8 +342,10 @@ export default function RegisterPage() {
                         className="w-full bg-white border border-slate-300 text-slate-900 rounded-md px-4 py-2.5 text-xs focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none transition-all"
                       >
                         <option value="PnS">Product & Services</option>
-                        <option value="Social">Social Entrepreneurship</option>
+                        <option value="Social">Social Track</option>
                         <option value="KGP">IIT KGP Innovation</option>
+                        <option value="DeeptechAI">Deeptech & AI</option>
+                        <option value="BlockchainWeb3">Blockchain & Web3</option>
                       </select>
                     </div>
                   </div>

@@ -47,6 +47,8 @@ export default function FilterBar({
         <option value="PnS">Product &amp; Services</option>
         <option value="Social">Social</option>
         <option value="KGP">IIT KGP</option>
+        <option value="DeeptechAI">Deeptech &amp; AI</option>
+        <option value="BlockchainWeb3">Blockchain &amp; Web3</option>
       </select>
     </div>
   );
