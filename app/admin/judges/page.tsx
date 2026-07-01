@@ -21,7 +21,6 @@ async function JudgeTables() {
 
   return (
     <div className="lg:col-span-2 space-y-8">
-      {/* Pending Judges List */}
       {pendingJudges.length > 0 && (
         <div className="bg-amber-50 border border-amber-200 rounded-md overflow-hidden shadow-sm">
           <div className="p-4 border-b border-amber-200 bg-amber-100">
@@ -72,7 +71,6 @@ async function JudgeTables() {
         </div>
       )}
 
-      {/* Active Panel */}
       <div className="bg-white border border-slate-200 rounded-md overflow-hidden shadow-sm h-full flex flex-col">
         <div className="p-4 border-b border-slate-200 bg-slate-50/50">
           <h3 className="font-semibold text-slate-900">Active Panel</h3>
@@ -140,7 +138,6 @@ async function JudgeTables() {
 export default function JudgesPage() {
   return (
     <div className="space-y-8 animate-fade-in">
-      {/* Header */}
       <div>
         <h2 className="text-3xl font-bold tracking-tight text-slate-900">Provision Judges</h2>
         <p className="text-slate-500 mt-2">
@@ -149,7 +146,6 @@ export default function JudgesPage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Create Judge Form */}
         <div className="lg:col-span-1">
           <div className="bg-white border border-slate-200 rounded-md p-6 shadow-sm">
             <div className="flex items-center gap-3 mb-6">
@@ -202,7 +198,6 @@ export default function JudgesPage() {
           </div>
         </div>
 
-        {/* Tables with Skeleton */}
         <Suspense fallback={<JudgeTableSkeleton />}>
           <JudgeTables />
         </Suspense>

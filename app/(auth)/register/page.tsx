@@ -23,7 +23,6 @@ export default function RegisterPage() {
   const router = useRouter();
   const [role, setRole] = useState<"judge" | "participant">("participant");
   
-  // Registration Form State
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
@@ -31,7 +30,6 @@ export default function RegisterPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   
-  // Role-specific fields
   const [panelId, setPanelId] = useState(""); // For judges
   const [track, setTrack] = useState("PnS"); // For participants
   const [projectName, setProjectName] = useState("");
@@ -115,7 +113,6 @@ export default function RegisterPage() {
       setIsLoading(false);
       setIsSuccess(true);
       
-      // Auto-redirect to login after 2 seconds
       setTimeout(() => {
         router.push("/login");
       }, 2000);
@@ -129,11 +126,9 @@ export default function RegisterPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-50 font-sans px-4 py-12">
 
-      {/* Main Container */}
       <div className="w-full max-w-xl">
         <div className="bg-white border border-slate-200 shadow-sm rounded-md p-8 md:p-10">
           
-          {/* Logo / Header */}
           <div className="flex flex-col items-center text-center mb-6">
             <Image
               src="/empresario.png"
@@ -158,7 +153,6 @@ export default function RegisterPage() {
           )}
 
           {isSuccess ? (
-            /* Premium Success State */
             <div className="flex flex-col items-center justify-center py-10 text-center animate-fade-in">
               <div className="w-16 h-16 rounded-full bg-green-50 border border-green-200 flex items-center justify-center mb-4 text-green-600">
                 <CheckCircle2 className="w-9 h-9" />
@@ -172,14 +166,12 @@ export default function RegisterPage() {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               
-              {/* Role Selection Tabs */}
               <div className="space-y-2">
                 <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 block">
                   Choose Account Type
                 </label>
                 <div className="grid grid-cols-2 gap-2 p-1 bg-slate-100 border border-slate-200 rounded-md">
                   
-                  {/* Participant Option */}
                   <button
                     type="button"
                     onClick={() => {
@@ -196,7 +188,6 @@ export default function RegisterPage() {
                     Participant
                   </button>
 
-                  {/* Judge Option */}
                   <button
                     type="button"
                     onClick={() => {
@@ -215,7 +206,6 @@ export default function RegisterPage() {
                 </div>
               </div>
 
-              {/* Name Details */}
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <label className="text-xs font-semibold uppercase tracking-wider text-slate-500">First Name</label>
@@ -241,7 +231,6 @@ export default function RegisterPage() {
                 </div>
               </div>
 
-              {/* Email & Username */}
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <label className="text-xs font-semibold uppercase tracking-wider text-slate-500">Username</label>
@@ -267,7 +256,6 @@ export default function RegisterPage() {
                 </div>
               </div>
 
-              {/* Passwords */}
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <label className="text-xs font-semibold uppercase tracking-wider text-slate-500">Password</label>
@@ -293,9 +281,7 @@ export default function RegisterPage() {
                 </div>
               </div>
 
-              {/* Conditional Form Fields */}
               {role === "judge" ? (
-                /* Judge Fields */
                 <div className="space-y-3.5 p-4 rounded-md bg-slate-50 border border-slate-200">
                   <div className="flex items-center gap-2 mb-1">
                     <ShieldCheck className="w-4 h-4 text-blue-800" />
@@ -314,7 +300,6 @@ export default function RegisterPage() {
                   </div>
                 </div>
               ) : (
-                /* Participant Fields */
                 <div className="space-y-3.5 p-4 rounded-md bg-slate-50 border border-slate-200">
                   <div className="flex items-center gap-2">
                     <Users className="w-4 h-4 text-blue-800" />
@@ -371,7 +356,6 @@ export default function RegisterPage() {
                 </div>
               )}
 
-              {/* Submit Button */}
               <button
                 type="submit"
                 disabled={isLoading}
@@ -390,7 +374,6 @@ export default function RegisterPage() {
                 )}
               </button>
 
-              {/* Link to Login */}
               <div className="text-center mt-4 text-xs text-slate-500">
                 Already registered?{" "}
                 <a href="/login" className="font-semibold text-blue-800 hover:text-blue-900 transition-colors">

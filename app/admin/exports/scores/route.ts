@@ -23,7 +23,6 @@ export async function GET(req: Request) {
   const url = new URL(req.url);
   const roundParam = url.searchParams.get("round"); // optional: filter to one round
 
-  // 1. Load all rounds (or just the requested one)
   const roundsQuery = roundParam ? { _id: roundParam } : {};
   const rounds = await Round.find(roundsQuery).sort({ order: 1 });
 
@@ -31,7 +30,6 @@ export async function GET(req: Request) {
     return new Response("No rounds found", { status: 404 });
   }
 
-  // 2. Build lookup maps for fast access
   const roundIds = rounds.map((r) => r._id);
   const roundMap = new Map(rounds.map((r) => [r._id.toString(), r]));
 
@@ -44,14 +42,12 @@ export async function GET(req: Request) {
   const judges = await User.find({ role: "judge" }).sort({ panelId: 1, lastName: 1 });
   const judgeMap = new Map(judges.map((j) => [j._id.toString(), j]));
 
-  // 3. Fetch all scores for the target round(s)
   const scores = await Score.find({ roundId: { $in: roundIds } }).sort({ createdAt: 1 });
 
   if (scores.length === 0) {
     return new Response("No scores recorded yet", { status: 404 });
   }
 
-  // 4. Build rows — one row per individual score entry
   const headers = [
     "round_order",
     "round_name",
@@ -78,7 +74,6 @@ export async function GET(req: Request) {
     const judge = judgeMap.get(s.judgeId.toString());
     const crit = criterionMap.get(s.criterionId.toString());
 
-    // Total weight for the round — needed to compute weighted contribution
     const roundCriteria = criteria.filter(
       (c) => c.roundId.toString() === s.roundId.toString()
     );

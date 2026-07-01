@@ -35,7 +35,6 @@ export async function calculateLeaderboard(roundId: string): Promise<Leaderboard
     
     if (teamAssignments.length === 0) continue; // Skip teams not assigned to this round
 
-    // Group scores by judge
     const teamScores = scores.filter(s => s.teamId.toString() === teamIdStr);
     const scoresByJudge: Record<string, typeof scores> = {};
     
@@ -51,13 +50,10 @@ export async function calculateLeaderboard(roundId: string): Promise<Leaderboard
     for (const judgeId of Object.keys(scoresByJudge)) {
       const judgeScores = scoresByJudge[judgeId];
       
-      // Calculate weighted score for this judge
       let judgeTotal = 0;
       for (const crit of criteria) {
         const critScore = judgeScores.find(s => s.criterionId.toString() === crit._id.toString());
         if (critScore) {
-          // Normalize to a percentage, then apply relative weight
-          // (score / max) * 100 * (weight / totalWeight)
           const normalized = (critScore.value / crit.max) * 100;
           judgeTotal += normalized * (crit.weight / totalWeight);
         }
@@ -79,6 +75,5 @@ export async function calculateLeaderboard(roundId: string): Promise<Leaderboard
     });
   }
 
-  // Sort descending
   return results.sort((a, b) => b.finalScore - a.finalScore);
 }

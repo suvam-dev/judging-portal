@@ -17,7 +17,7 @@ import {
 
 export default function LoginPage() {
     const [role, setRole] = useState<"judge" | "participant">("judge");
-    const [identifier, setIdentifier] = useState(""); // Can be username or email
+    const [identifier, setIdentifier] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -81,7 +81,6 @@ export default function LoginPage() {
             <div className="w-full max-w-lg">
                 <div className="bg-white border border-slate-200 shadow-sm rounded-md p-8 md:p-10">
 
-                    {/* Logo / Header */}
                     <div className="flex flex-col items-center text-center mb-8">
                         <Image
                             src="/empresario.png"
@@ -100,7 +99,6 @@ export default function LoginPage() {
                     </div>
 
                     {isSuccess ? (
-                        /* Premium Success Verification State */
                         <div className="flex flex-col items-center justify-center py-12 text-center animate-fade-in">
                             <div className="w-16 h-16 rounded-full bg-green-50 border border-green-200 flex items-center justify-center mb-4 text-green-600 shadow-sm">
                                 <CheckCircle2 className="w-9 h-9" />
@@ -114,21 +112,18 @@ export default function LoginPage() {
                     ) : (
                         <form onSubmit={handleSubmit} className="space-y-6">
 
-                            {/* General error message */}
                             {errors.general && (
                                 <div className="p-3.5 rounded-md bg-red-50 border border-red-200 text-red-600 text-xs font-semibold text-center">
                                     {errors.general}
                                 </div>
                             )}
 
-                            {/* Role Selection Group */}
                             <div className="space-y-3">
                                 <label className="text-xs font-semibold uppercase tracking-wider text-slate-600 block">
                                     Select Your Portal Role
                                 </label>
                                 <div className="grid grid-cols-2 gap-3 p-1.5 bg-slate-50 border border-slate-200 rounded-md relative">
 
-                                    {/* Judge Option */}
                                     <button
                                         type="button"
                                         onClick={() => setRole("judge")}
@@ -141,7 +136,6 @@ export default function LoginPage() {
                                         Judge Portal
                                     </button>
 
-                                    {/* Participant Option */}
                                     <button
                                         type="button"
                                         onClick={() => setRole("participant")}
@@ -156,7 +150,6 @@ export default function LoginPage() {
                                 </div>
                             </div>
 
-                            {/* Username/Email Input */}
                             <div className="space-y-2">
                                 <label className="text-xs font-semibold uppercase tracking-wider text-slate-600 block">
                                     Username or Email
@@ -188,7 +181,6 @@ export default function LoginPage() {
                                 )}
                             </div>
 
-                            {/* Password Input */}
                             <div className="space-y-2">
                                 <div className="flex justify-between items-center">
                                     <label className="text-xs font-semibold uppercase tracking-wider text-slate-600 block">
@@ -228,7 +220,6 @@ export default function LoginPage() {
                                 )}
                             </div>
 
-                            {/* Submit Button */}
                             <button
                                 type="submit"
                                 disabled={isLoading}
@@ -247,7 +238,6 @@ export default function LoginPage() {
                                 )}
                             </button>
 
-                            {/* Sign Up Redirect */}
                             <div className="text-center mt-6 text-sm text-slate-500">
                                 Don&apos;t have a portal account?{" "}
                                 <a href="/register" className="font-semibold text-blue-800 hover:text-blue-900 transition-colors">

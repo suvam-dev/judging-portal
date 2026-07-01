@@ -21,7 +21,6 @@ export async function POST(req: Request) {
       pptLink 
     } = body;
 
-    // Server-side validation
     if (!firstName || !lastName || !username || !email || !password || !role) {
       return NextResponse.json(
         { message: "All core fields are required." },
@@ -29,7 +28,6 @@ export async function POST(req: Request) {
       );
     }
 
-    // Security: explicitly forbid registering as an admin via the public API
     if (role === "admin") {
       return NextResponse.json(
         { message: "Forbidden: Cannot register as an administrator." },
@@ -44,7 +42,6 @@ export async function POST(req: Request) {
       );
     }
 
-    // Check duplication
     const duplicate = await User.findOne({
       $or: [
         { email: email.toLowerCase() },
@@ -61,7 +58,6 @@ export async function POST(req: Request) {
 
     const hashedPassword = await hashPassword(password);
 
-    // Build user object
     const newUser = new User({
       firstName,
       lastName,
@@ -70,16 +66,10 @@ export async function POST(req: Request) {
       passwordHash: hashedPassword,
       role,
       panelId: role === "judge" ? parseInt(panelId, 10) : undefined,
-      // The old JSON way saved participant data inside the User,
-      // but in MongoDB they should link to a Team model.
-      // We will skip team creation here or let participants create their team later.
-      // Or we can create the Team here if role === participant
     });
 
-    // Save to DB
     await newUser.save();
 
-    // If role is participant, create a Team document for them
     if (role === "participant" && projectName) {
       const { Team } = await import("@/models/Team");
       try {
@@ -94,11 +84,9 @@ export async function POST(req: Request) {
         });
         await newTeam.save();
 
-        // Link user to team
         newUser.teamId = newTeam._id;
         await newUser.save();
       } catch (teamError: any) {
-        // Rollback: delete the orphaned user so they can re-register correctly
         await newUser.deleteOne();
         const isDuplicate = teamError.code === 11000;
         return NextResponse.json(
@@ -110,7 +98,6 @@ export async function POST(req: Request) {
       }
     }
 
-    // Bust admin page caches so the new participant appears immediately
     revalidatePath("/admin");
     revalidatePath("/admin/teams");
 

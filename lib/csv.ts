@@ -1,5 +1,3 @@
-// Minimal RFC 4180 CSV serializer. Quotes fields that contain commas, quotes,
-// or newlines; doubles embedded quotes.
 function escape(value: unknown): string {
   if (value === null || value === undefined) return "";
   const s = String(value);

@@ -4,7 +4,6 @@ const AuditLogSchema = new Schema(
   {
     actorId: { type: Schema.Types.ObjectId, ref: "User", required: true, index: true },
 
-    // Dotted action name, e.g. "user.approve", "round.open", "rubric.update".
     action: { type: String, required: true, index: true },
 
     targetType: { type: String, default: null },

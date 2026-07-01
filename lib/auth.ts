@@ -13,7 +13,6 @@ export async function verifyPassword(plain: string, hash: string) {
   return bcrypt.compare(plain, hash);
 }
 
-// Create a signed token and set it as an HTTP-only cookie
 export async function createSession(user: any) {
   const token = await new SignJWT({ sub: String(user._id), role: user.role })
     .setProtectedHeader({ alg: "HS256" })
@@ -30,7 +29,6 @@ export async function createSession(user: any) {
   });
 }
 
-// Read + verify the current session (returns null if invalid)
 export async function getSession() {
   const cookieStore = await cookies();
   const token = cookieStore.get(COOKIE)?.value;

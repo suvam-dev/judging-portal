@@ -82,7 +82,6 @@ export default function RoundsPage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Create Round Form — static, no data needed */}
         <div className="lg:col-span-1">
           <div className="bg-white border border-slate-200 rounded-md p-6 shadow-sm">
             <div className="flex items-center gap-3 mb-6">
@@ -111,7 +110,6 @@ export default function RoundsPage() {
           </div>
         </div>
 
-        {/* Timeline with Skeleton */}
         <div className="lg:col-span-2">
           <Suspense fallback={<RoundsTimelineSkeleton />}>
             <RoundsTimeline />

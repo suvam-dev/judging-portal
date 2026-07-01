@@ -103,7 +103,6 @@ export default function ExportsPage() {
         </p>
       </div>
 
-      {/* General Exports — static, no skeleton needed */}
       <div>
         <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-4">
           General Data
@@ -165,7 +164,6 @@ export default function ExportsPage() {
         </div>
       </div>
 
-      {/* Per-Round Leaderboard Exports — skeleton while rounds load */}
       <div>
         <h3 className="text-lg font-semibold text-slate-900 mb-1 flex items-center gap-2">
           <Trophy className="w-5 h-5 text-yellow-600" /> Leaderboard by Round

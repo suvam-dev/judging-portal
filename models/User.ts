@@ -18,10 +18,8 @@ const UserSchema = new Schema(
     firstName: { type: String, required: true, trim: true },
     lastName: { type: String, required: true, trim: true },
 
-    // Judge-only: optional panel grouping (admins assign judges to a panel)
     panelId: { type: Number, default: null },
 
-    // Participant-only: link to the team this user owns/registered
     teamId: { type: Schema.Types.ObjectId, ref: "Team", default: null, index: true },
 
     lastLoginAt: { type: Date, default: null },

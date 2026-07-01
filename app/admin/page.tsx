@@ -15,7 +15,6 @@ async function DashboardStats() {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {/* Participants Card */}
       <div className="bg-white border border-slate-200 rounded-md p-6 shadow-sm">
         <div className="flex justify-between items-start mb-4">
           <div>
@@ -31,7 +30,6 @@ async function DashboardStats() {
         </p>
       </div>
 
-      {/* Judges Card */}
       <div className="bg-white border border-slate-200 rounded-md p-6 shadow-sm">
         <div className="flex justify-between items-start mb-4">
           <div>
@@ -47,7 +45,6 @@ async function DashboardStats() {
         </p>
       </div>
 
-      {/* Active Round Card */}
       <div className="bg-white border border-slate-200 rounded-md p-6 shadow-sm">
         <div className="flex justify-between items-start mb-4">
           <div className="flex-1 min-w-0">
@@ -76,7 +73,6 @@ async function DashboardStats() {
         </p>
       </div>
 
-      {/* Pending Approvals Card (Alert) */}
       <div className={`bg-white border ${stats.pendingParticipants > 0 ? "border-amber-300 bg-amber-50" : "border-slate-200"} rounded-md p-6 shadow-sm`}>
         <div className="flex justify-between items-start mb-4">
           <div>
@@ -139,7 +135,6 @@ async function QuickActions() {
 export default function AdminDashboard() {
   return (
     <div className="space-y-8 animate-fade-in">
-      {/* Header */}
       <div>
         <h2 className="text-3xl font-bold tracking-tight text-slate-900">Dashboard Overview</h2>
         <p className="text-slate-600 mt-2">
@@ -147,12 +142,10 @@ export default function AdminDashboard() {
         </p>
       </div>
 
-      {/* Stats Grid with Skeleton */}
       <Suspense fallback={<DashboardStatsGridSkeleton />}>
         <DashboardStats />
       </Suspense>
 
-      {/* Quick Actions with Skeleton */}
       <Suspense fallback={<QuickActionsSkeleton />}>
         <QuickActions />
       </Suspense>

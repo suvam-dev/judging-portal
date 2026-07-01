@@ -49,10 +49,8 @@ export default async function JudgeDashboard() {
     );
   }
 
-  // Fetch ALL currently open rounds
   const openRounds = await Round.find({ status: "open" }).sort({ order: 1 });
 
-  // For each open round, fetch this judge's assignments + team data
   type RoundWithTeams = {
     roundId: string;
     roundName: string;
@@ -81,7 +79,6 @@ export default async function JudgeDashboard() {
     <div className="min-h-screen bg-slate-50 text-slate-900 p-6 md:p-12 font-sans overflow-hidden">
       <div className="max-w-5xl mx-auto space-y-8 animate-fade-in">
 
-        {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200 pb-6">
           <div>
             <div className="flex items-center gap-3 mb-2">
@@ -112,7 +109,6 @@ export default async function JudgeDashboard() {
           </div>
         </div>
 
-        {/* Main Content */}
         {openRounds.length === 0 ? (
           <div className="bg-white border border-slate-200 rounded-md p-12 text-center shadow-sm">
             <ClipboardCheck className="w-16 h-16 text-slate-400 mx-auto mb-4" />

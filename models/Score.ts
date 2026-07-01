@@ -13,7 +13,6 @@ const ScoreSchema = new Schema(
   { timestamps: true },
 );
 
-// One score per (round, judge, team, criterion) — section 7.2 upsert semantics.
 ScoreSchema.index(
   { roundId: 1, judgeId: 1, teamId: 1, criterionId: 1 },
   { unique: true },

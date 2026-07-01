@@ -35,13 +35,10 @@ export default function ScoringForm({
   const [showSuccess, setShowSuccess] = useState(false);
   const router = useRouter();
 
-  // Track which criteria have a score filled in.
-  // Pre-populate from existingScores so returning judges start "complete".
   const [filledScores, setFilledScores] = useState<Record<string, boolean>>(() => {
     const initial: Record<string, boolean> = {};
     for (const crit of criteria) {
       const existing = existingScores.find((s) => s.criterionId === crit._id);
-      // A pre-saved score counts as filled (value is a number, including 0)
       initial[crit._id] = existing !== undefined && existing.value !== null && existing.value !== undefined && String(existing.value).trim() !== "";
     }
     return initial;
@@ -52,7 +49,6 @@ export default function ScoringForm({
   const allFilled = filledCount === totalCount;
   const progressPercent = totalCount > 0 ? Math.round((filledCount / totalCount) * 100) : 0;
 
-  // Redirect after successful submission
   useEffect(() => {
     if (state.success) {
       setShowSuccess(true);
@@ -86,7 +82,6 @@ export default function ScoringForm({
       <input type="hidden" name="teamId" value={teamId} />
       <input type="hidden" name="roundId" value={roundId} />
 
-      {/* Progress tracker */}
       <div className="bg-slate-50 border border-slate-200 rounded-md p-4">
         <div className="flex items-center justify-between mb-2">
           <span className="text-sm font-semibold text-slate-700">Scoring Progress</span>
@@ -94,7 +89,6 @@ export default function ScoringForm({
             {filledCount} / {totalCount} criteria filled
           </span>
         </div>
-        {/* Progress bar */}
         <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
           <div
             className={`h-full rounded-full transition-all duration-300 ${allFilled ? "bg-green-500" : "bg-amber-500"}`}
@@ -123,7 +117,6 @@ export default function ScoringForm({
                   : "border-amber-300 bg-amber-50/30"
               }`}
             >
-              {/* Left accent bar: green if filled, amber if not */}
               <div
                 className={`absolute top-0 left-0 w-1 h-full rounded-l-md transition-colors ${
                   isFilled ? "bg-green-500" : "bg-amber-400"
@@ -135,7 +128,6 @@ export default function ScoringForm({
                   <div className="flex items-center gap-2 mb-1">
                     <span className="text-xs font-bold text-blue-800">#{crit.order}</span>
                     <h4 className="text-lg font-bold text-slate-900">{crit.name}</h4>
-                    {/* Filled checkmark */}
                     {isFilled && <CheckCircle2 className="w-4 h-4 text-green-500 shrink-0" />}
                   </div>
                   <p className="text-sm text-slate-600">{crit.description}</p>
@@ -183,7 +175,6 @@ export default function ScoringForm({
       </div>
 
       <div className="pt-4 border-t border-slate-200 space-y-3">
-        {/* Warning when not all filled */}
         {!allFilled && (
           <div className="flex items-center gap-2 p-3 bg-amber-50 border border-amber-200 rounded-md">
             <AlertCircle className="w-4 h-4 text-amber-600 shrink-0" />

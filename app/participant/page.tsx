@@ -36,7 +36,6 @@ export default async function ParticipantPage() {
     <div className="min-h-screen bg-slate-50 text-slate-900 p-6 md:p-12 font-sans overflow-hidden">
       <div className="max-w-4xl mx-auto space-y-8 animate-fade-in">
         
-        {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200 pb-6">
           <div>
             <h1 className="text-4xl font-extrabold tracking-tight text-slate-900">
@@ -67,7 +66,6 @@ export default async function ParticipantPage() {
           </div>
         </div>
 
-        {/* Status Banner */}
         {team.status === "pending" && (
           <div className="bg-amber-50 border border-amber-200 rounded-md p-6 flex gap-4 shadow-sm">
             <div className="mt-1">
@@ -84,7 +82,6 @@ export default async function ParticipantPage() {
           </div>
         )}
 
-        {/* Team Details Card */}
         <div className="bg-white border border-slate-200 shadow-sm rounded-md p-8">
           <div className="flex items-center gap-3 mb-8 pb-6 border-b border-slate-200">
             <div className="w-12 h-12 rounded-md bg-blue-50 flex items-center justify-center border border-blue-100">

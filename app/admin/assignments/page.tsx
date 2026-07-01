@@ -31,7 +31,6 @@ async function AssignmentsContent() {
 
   return (
     <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
-      {/* Assignment Form */}
       <div className="xl:col-span-1">
         <div className="bg-white border border-slate-200 rounded-md p-6 shadow-sm">
           <div className="flex items-center gap-3 mb-6">
@@ -88,7 +87,6 @@ async function AssignmentsContent() {
         </div>
       </div>
 
-      {/* Existing Assignments Table */}
       <div className="xl:col-span-2">
         <div className="bg-white border border-slate-200 rounded-md overflow-hidden shadow-sm h-full flex flex-col">
           <div className="p-4 border-b border-slate-200 bg-slate-50/50 flex items-center justify-between">

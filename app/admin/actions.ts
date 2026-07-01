@@ -21,7 +21,6 @@ export async function getDashboardStats() {
     const totalJudges = await User.countDocuments({ role: "judge" });
     const activeJudges = await User.countDocuments({ role: "judge", status: "active" });
     
-    // Fetch ALL open rounds so simultaneous rounds are shown
     const openRounds = await Round.find({ status: "open" }).sort({ order: 1 });
     const totalTeams = await Team.countDocuments();
 

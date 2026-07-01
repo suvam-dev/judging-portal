@@ -16,12 +16,10 @@ export const metadata = {
 async function TeamsList() {
   await dbConnect();
 
-  // Fetch all teams and populate the owner's info
   const teams = await Team.find({}).populate("ownerUserId", "firstName lastName email").sort({ createdAt: -1 });
 
   return (
     <div className="space-y-8 animate-fade-in">
-      {/* Header */}
       <div>
         <h2 className="text-3xl font-bold tracking-tight text-slate-900">Manage Teams</h2>
         <p className="text-slate-500 mt-2">
@@ -29,7 +27,6 @@ async function TeamsList() {
         </p>
       </div>
 
-      {/* Table Container */}
       <div className="bg-white border border-slate-200 rounded-md overflow-hidden shadow-sm">
         <div className="p-4 border-b border-slate-200 flex items-center justify-between bg-slate-50/50">
           <div className="relative">
@@ -121,7 +118,6 @@ async function TeamsList() {
 export default function TeamsPage() {
   return (
     <div className="space-y-8 animate-fade-in">
-      {/* Header */}
       <div>
         <h2 className="text-3xl font-bold tracking-tight text-slate-900">Manage Teams</h2>
         <p className="text-slate-500 mt-2">
@@ -129,7 +125,6 @@ export default function TeamsPage() {
         </p>
       </div>
 
-      {/* Teams Table with Skeleton */}
       <Suspense fallback={<TableSkeleton rows={8} cols={5} />}>
         <TeamsList />
       </Suspense>

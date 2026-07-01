@@ -46,10 +46,8 @@ export default async function ScoringPage({
   let openRound: Awaited<ReturnType<typeof Round.findOne>> | null = null;
 
   if (roundIdParam) {
-    // Caller supplied an explicit round — verify it is still open
     openRound = await Round.findOne({ _id: roundIdParam, status: "open" });
   } else {
-    // Fallback: find any open round where this judge has an assignment for this team
     const assignment = await Assignment.findOne({
       judgeId: session.userId,
       teamId: team._id,
@@ -106,7 +104,6 @@ export default async function ScoringPage({
     <div className="min-h-screen bg-slate-50 text-slate-900 p-6 md:p-12 font-sans overflow-hidden">
       <div className="max-w-5xl mx-auto space-y-8 animate-fade-in">
 
-        {/* Header */}
         <div>
           <Link href="/judge" className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-900 transition-colors mb-6 group">
             <ChevronLeft className="w-4 h-4" />
@@ -143,9 +140,7 @@ export default async function ScoringPage({
           </div>
         </div>
 
-        {/* Scoring Area */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Team Details Sidebar */}
           <div className="space-y-6">
             <div className="bg-white border border-slate-200 p-6 rounded-md shadow-sm">
               <h3 className="font-bold text-slate-900 mb-4">Team Members</h3>
@@ -165,7 +160,6 @@ export default async function ScoringPage({
             </div>
           </div>
 
-          {/* Scoring Form */}
           <div className="lg:col-span-2">
             <div className="bg-white border border-slate-200 p-6 md:p-8 rounded-md shadow-sm">
               <div className="flex items-center gap-3 mb-6">

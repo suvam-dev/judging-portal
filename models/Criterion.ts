@@ -7,8 +7,6 @@ const CriterionSchema = new Schema(
     name: { type: String, required: true, trim: true },
     description: { type: String, default: null, trim: true },
 
-    // Weights are stored raw; the scoring layer normalizes them to sum to 1
-    // across the round, so admins can edit one weight without rebalancing the rest.
     weight: { type: Number, required: true, min: 0 },
     max: { type: Number, required: true, min: 1 },
 

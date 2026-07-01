@@ -12,7 +12,6 @@ const RoundSchema = new Schema(
     startsAt: { type: Date, default: null },
     endsAt: { type: Date, default: null },
 
-    // When true, judges can edit scores; flipped off when the round is closed.
     scoresEditable: { type: Boolean, default: true },
   },
   { timestamps: true },

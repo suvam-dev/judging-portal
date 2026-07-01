@@ -5,7 +5,6 @@ import RotatingEarth from "@/components/ui/wireframe-dotted-globe";
 export default function Home() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-black text-white">
-      {/* Header */}
       <header className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-8 py-6">
         <Image
           src="/empresario.png"
@@ -23,12 +22,10 @@ export default function Home() {
         </Link>
       </header>
 
-      {/* Globe — sits behind, centered */}
       <div className="absolute inset-0 flex items-center justify-center z-0 opacity-90">
         <RotatingEarth width={900} height={900} />
       </div>
 
-      {/* Hero copy */}
       <main className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 text-center pointer-events-none">
         <Image
           src="/empresario.png"

@@ -13,9 +13,6 @@ export class AuthError extends Error {
   }
 }
 
-// Verifies the session JWT AND re-reads the user from the DB so that admins
-// whose status was flipped to "disabled" lose access immediately instead of
-// at JWT expiry. Returns the actor — callers use it to write AuditLog rows.
 export async function requireAdmin(): Promise<UserDoc> {
   const cookieStore = await cookies();
   const token = cookieStore.get("session")?.value;

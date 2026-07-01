@@ -16,7 +16,6 @@ export async function POST(req: Request) {
       );
     }
 
-    // Find user by username or email, selecting passwordHash explicitly
     const user = await User.findOne({
       $or: [
         { email: identifier.toLowerCase() },
@@ -38,7 +37,6 @@ export async function POST(req: Request) {
       );
     }
 
-    // Verify password
     const ok = await verifyPassword(password, user.passwordHash);
     if (!ok) {
       return NextResponse.json(
@@ -47,11 +45,9 @@ export async function POST(req: Request) {
       );
     }
 
-    // Update last login
     user.lastLoginAt = new Date();
     await user.save();
 
-    // Create JWT Session Cookie
     await createSession(user);
 
     return NextResponse.json(

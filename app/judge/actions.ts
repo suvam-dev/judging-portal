@@ -23,13 +23,11 @@ export async function submitScores(prevState: any, formData: FormData) {
       return { error: "Missing team or round identification." };
     }
 
-    // Verify round is open
     const round = await Round.findById(roundId);
     if (!round || round.status !== "open") {
       return { error: "Scoring is currently closed for this round." };
     }
 
-    // Verify assignment
     const assignment = await Assignment.findOne({
       judgeId: session.userId,
       teamId,
@@ -40,10 +38,8 @@ export async function submitScores(prevState: any, formData: FormData) {
       return { error: "You are not assigned to score this team for this round." };
     }
 
-    // Extract scores and comments dynamically from FormData
     const scoresToUpsert = [];
     
-    // We expect keys like `score_CRITERIONID` and `comment_CRITERIONID`
     for (const [key, value] of Array.from(formData.entries())) {
       if (key.startsWith("score_") && value) {
         const criterionId = key.replace("score_", "");
@@ -66,7 +62,6 @@ export async function submitScores(prevState: any, formData: FormData) {
       return { error: "No scores provided." };
     }
 
-    // Upsert each score
     for (const score of scoresToUpsert) {
       await Score.findOneAndUpdate(
         {
